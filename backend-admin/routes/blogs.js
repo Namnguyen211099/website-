@@ -1,0 +1,10 @@
+const r = require('express').Router();
+const c = require('../controllers/blogsController');
+const { protect, isAdmin } = require('../middleware/auth');
+r.get('/', c.listPublic);
+r.get('/:slug', c.getPublic);
+r.get('/admin/list', protect, isAdmin, c.adminList);
+r.post('/admin', protect, isAdmin, c.adminCreate);
+r.put('/admin/:id', protect, isAdmin, c.adminUpdate);
+r.delete('/admin/:id', protect, isAdmin, c.adminDelete);
+module.exports = r;

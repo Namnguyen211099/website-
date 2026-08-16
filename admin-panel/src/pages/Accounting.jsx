@@ -1,0 +1,7 @@
+import {useEffect,useState} from 'react';
+import api from '../api/client';
+export default function Accounting(){
+ const [data,setData]=useState(null),[rows,setRows]=useState([]);
+ useEffect(()=>{Promise.all([api.get('/accounting/summary'),api.get('/accounting/entries')]).then(([a,b])=>{setData(a.data.data);setRows(b.data.data||[])})},[]);
+ return <div><h1 className="text-2xl font-bold mb-4">Kế toán</h1><div className="grid md:grid-cols-3 gap-4 mb-4">{[['Thu nhập',data?.income],['Chi phí',data?.expense],['Lợi nhuận',data?.profit]].map(([l,v])=><div className="bg-white rounded-xl p-5" key={l}><div className="text-gray-500">{l}</div><div className="text-2xl font-bold">{Number(v||0).toLocaleString()}đ</div></div>)}</div><div className="bg-white rounded-xl shadow overflow-auto"><table className="min-w-full text-sm"><thead><tr className="bg-gray-50 border-b">{['Ngày','Loại','Danh mục','Số tiền','Phương thức','Người nộp/nhận','Ghi chú'].map(x=><th className="p-3 text-left" key={x}>{x}</th>)}</tr></thead><tbody>{rows.map(r=><tr className="border-b" key={r.id}><td className="p-3">{String(r.entry_date).slice(0,10)}</td><td className="p-3">{r.type}</td><td className="p-3">{r.category}</td><td className="p-3">{Number(r.amount||0).toLocaleString()}đ</td><td className="p-3">{r.method}</td><td className="p-3">{r.payer_payee}</td><td className="p-3">{r.note}</td></tr>)}</tbody></table></div></div>;
+}

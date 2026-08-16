@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-dark font-sans;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .btn-primary {
+    @apply bg-primary text-white px-7 py-3 rounded-xl font-bold hover:bg-primary-dark transition-all duration-200 hover:-translate-y-0.5 inline-block;
+  }
+  .btn-outline {
+    @apply bg-transparent text-white border-2 border-white px-7 py-3 rounded-xl font-bold hover:bg-white hover:text-primary transition-all duration-200 inline-block;
+  }
+  .btn-submit {
+    @apply w-full bg-primary text-white py-3.5 rounded-xl font-bold hover:bg-primary-dark transition-colors duration-200 cursor-pointer text-[15px];
+  }
+  .card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300;
+  }
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl text-[14px] bg-gray-50 focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary-light transition-all;
+  }
+  .form-label {
+    @apply block text-[13px] font-bold text-muted mb-1.5;
+  }
+  .section-title {
+    @apply text-center mb-14;
+  }
+  .section-title h2 {
+    @apply text-3xl md:text-4xl font-extrabold mb-3;
+  }
+  .section-title p {
+    @apply text-muted text-[15px];
+  }
+  .status-pill {
+    @apply text-[11px] px-3 py-1 rounded-full font-semibold;
+  }
+  .page-hero {
+    @apply bg-gradient-to-br from-dark to-primary-dark text-white py-12;
+  }
+  .page-hero h1 {
+    @apply text-3xl md:text-4xl font-extrabold;
+  }
+  .page-hero p {
+    @apply text-white/85 mt-2;
+  }
+}
+
+/* Toast animation */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.toast {
+  animation: slideIn 0.3s ease;
+}
+
+/* Page transition */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.page-animate {
+  animation: fadeInUp 0.4s ease;
+}

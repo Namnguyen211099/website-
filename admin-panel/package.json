@@ -1,0 +1,22 @@
+{
+  "name": "dxgroup-admin-panel-v3.5",
+  "private": true,
+  "version": "3.5.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 4000",
+    "build": "vite build --outDir ../backend-admin/public/admin --emptyOutDir",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "axios": "^1.7.4",
+    "react-toastify": "^10.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.1"
+  }
+}
